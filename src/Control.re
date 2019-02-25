@@ -26,6 +26,7 @@ let make = _children => {
         value=self.state.inputValue
         onChange=(e => self.send(Write(ReactEvent.Form.target(e)##value))) />
       <Result dice=self.state.submittedValue roll=(_ => self.send(Roll)) />
+      <Statistics dice=self.state.submittedValue />
     </div>;
   },
 };
