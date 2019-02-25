@@ -20,11 +20,11 @@ let make = (~dice, ~roll, _children) => {
       ...{
           ({result, refetch}) =>
             switch (result) {
-            | Loading => <div> {ReasonReact.string("Loading")} </div>
+            | Loading => <div className="ResultContainer"> {ReasonReact.string("Loading")} </div>
             | Error(error) =>
-              <div> {ReasonReact.string(error##message)} </div>
+              <div className="ResultContainer"> {ReasonReact.string(error##message)} </div>
             | Data(response) =>
-              <div>
+              <div className="ResultContainer">
                 <button
                   className="Button"
                   onClick=(_ => { roll(());  refetch(None) |> ignore })>
