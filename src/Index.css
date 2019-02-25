@@ -1,0 +1,38 @@
+#root {
+  text-align: center;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: lighter;
+  padding: 2rem;
+}
+
+.Input {
+  border: none;
+  border-bottom: 2px solid #ddd;
+  font-size: 24px;
+  font-weight: lighter;
+  text-align: center;
+  margin: 1rem 0;
+  max-width: 100%;
+}
+
+.Button {
+  border-radius: 0;
+  border: 0;
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+.VictoryContainer {
+  max-width: 500px;
+  margin: auto;
+}
+
+.Result {
+  font-size: 30px;
+  padding: 2rem;
+}
+
+.ResultContainer {
+  height: 100px;
+}
