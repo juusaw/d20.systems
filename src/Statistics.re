@@ -34,15 +34,19 @@ let make = (~dice, _children) => {
             let distribution = response##roll
             -> Belt.Option.map(roll => roll##statistics)
             -> Belt.Option.flatMap(stats => stats##distribution);
-            let data = distribution -> Belt.Option.mapWithDefault(Array.of_list([]): array(dataPoint), distr => toDataPoints(distr));
-            Victory.(
-              <VictoryChart domainPadding=20 theme=VictoryTheme.material>
-                <VictoryAxis />
-                <VictoryStack colorScale="grayscale">
-                  <VictoryBar data />
-                </VictoryStack>
-              </VictoryChart>
-            )
+            let data = distribution
+            -> Belt.Option.mapWithDefault(Array.of_list([]): array(dataPoint), distr => toDataPoints(distr));
+            switch (Array.length(data)) {
+              | 0 => ReasonReact.null
+              | _ => Victory.(
+                      <VictoryChart domainPadding=20 theme=VictoryTheme.material>
+                        <VictoryAxis />
+                        <VictoryStack colorScale="grayscale">
+                          <VictoryBar data />
+                        </VictoryStack>
+                      </VictoryChart>
+                    )
+            }
         }}
     </RollStatsQuery>
   }
