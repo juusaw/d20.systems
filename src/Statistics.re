@@ -12,7 +12,7 @@ let component = ReasonReact.statelessComponent("Statistics");
 
 type dataPoint = Victory.victoryData
 
-let toDataPoints: option(Js.Array.t(option(int))) => array(Victory.victoryData) = [%bs.raw {| 
+let toDataPoints: Js.Array.t(int) => array(Victory.victoryData) = [%bs.raw {|
   function (data) {
     return Array.from(data.reduce((m, x) => m.set(x, (m.get(x) || 0) + 1) , new Map())).map(([x, y]) => ({x, y}))
   }
@@ -33,7 +33,7 @@ let make = (~dice, _children) => {
           | Data(response) =>
             let distribution = response##roll
             -> Belt.Option.map(roll => roll##statistics)
-            -> Belt.Option.map(stats => stats##distribution);
+            -> Belt.Option.flatMap(stats => stats##distribution);
             let data = distribution -> Belt.Option.mapWithDefault(Array.of_list([]): array(dataPoint), distr => toDataPoints(distr));
             Victory.(
               <VictoryChart domainPadding=20 theme=VictoryTheme.material>
