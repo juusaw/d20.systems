@@ -3892,9 +3892,10 @@ reason-react@>=0.4.0:
     react ">=15.0.0 || >=16.0.0"
     react-dom ">=15.0.0 || >=16.0.0"
 
-"reason-victory@github:juusaw/reason-victory":
+reason-victory@0.0.1:
   version "0.0.1"
-  resolved "https://codeload.github.com/juusaw/reason-victory/tar.gz/552dd20ad5b703d0e68d032c749188b35dde1d36"
+  resolved "https://registry.yarnpkg.com/reason-victory/-/reason-victory-0.0.1.tgz#46c8ebd586d953646623794dda8fbf1fb6f3cd16"
+  integrity sha512-ATA7hkOpWdjSrQhhT966YErIoCDKTjpjaZHhTR85B8thf/9z+wiGsV/jOZjibv3bLky0qFMfnKAD/oUzsivzUA==
   dependencies:
     victory "^32.0.0"
 
