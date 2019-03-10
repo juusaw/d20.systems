@@ -35,11 +35,10 @@ let make = (~dice, _children) => {
         | Data(response) =>
           let distribution =
             response##roll
-            ->Belt.Option.map(roll => roll##statistics)
-            ->Belt.Option.flatMap(stats => stats##distribution);
+            ->Belt.Option.flatMap(roll => roll##statistics##distribution);
           let data =
             distribution->Belt.Option.mapWithDefault(
-              Array.of_list([]): array(dataPoint), distr =>
+              [||]: array(dataPoint), distr =>
               toDataPoints(distr)
             );
           switch (Array.length(data)) {

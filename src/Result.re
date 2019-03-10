@@ -28,13 +28,14 @@ let make = (~dice, ~roll, _children) => {
             {ReasonReact.string(error##message)}
           </div>
         | Data(response) =>
-          <div className="ResultContainer">
-            <button
-              className="Button"
-              onClick={_ => {
+          <form
+            className="ResultContainer"
+            onSubmit={e => {
+              e->ReactEvent.Form.preventDefault;
                 roll();
                 refetch(None) |> ignore;
               }}>
+            <button className="Button" type_="submit">
               {ReasonReact.string("Roll")}
             </button>
             <section className="Result">
@@ -46,7 +47,7 @@ let make = (~dice, ~roll, _children) => {
                    ),
                )}
             </section>
-          </div>
+          </form>
         }
       }
     </RollQuery>;

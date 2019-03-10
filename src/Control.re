@@ -22,9 +22,18 @@ let make = _children => {
 
   render: self => {
     <div>
-      <Input
+      <input
+        className="Input"
+        type_="text"
+        placeholder="Example: 1d6"
         value={self.state.inputValue}
         onChange={e => self.send(Write(ReactEvent.Form.target(e)##value))}
+        onKeyDown={e =>
+          switch (ReactEvent.Keyboard.key(e)) {
+          | "Enter" => self.send(Roll)
+          | _ => ignore()
+          }
+        }
       />
       <Result dice={self.state.submittedValue} roll={_ => self.send(Roll)} />
       <Statistics dice={self.state.submittedValue} />
